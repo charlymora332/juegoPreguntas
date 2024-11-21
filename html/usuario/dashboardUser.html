@@ -1,0 +1,73 @@
+
+
+<style>
+
+  .ctn h1, .ctn h2 {
+    color: #ffffff;
+    text-align: center;
+  }
+  .ctn p, .centrado{
+    max-width: 600px;
+    margin: 10px auto;
+    text-align: justify;
+  }
+  .ctn p strong {
+    color: #4c9ff7;
+  }
+</style>
+
+
+<div class="ctn">
+  <h1>¡Bienvenido a </br>
+    ¿Cuánto sabes sobre el Llano colombiano?!</h1>
+  <p   >
+    En este juego pondrás a prueba tus conocimientos sobre la cultura, geografía, música y tradiciones de los Llanos
+    Orientales de Colombia.
+  </p>
+  <p>
+    Puedes seleccionar entre diferentes niveles de dificultad: <strong>Fácil</strong>, <strong>Intermedio</strong> y
+    <strong>Difícil</strong>.
+    A continuación, responderás una serie de preguntas. Algunas tendrán opciones de respuesta múltiple, y deberás
+    seleccionar todas las respuestas correctas.
+  </p>
+  <p>
+    ¡Buena suerte y que te diviertas aprendiendo más sobre esta hermosa región!
+  </p>
+
+
+
+  <h2>Selecciona la dificultad</h2>
+
+
+  
+<form action="" class="centrado">
+
+  <select id="nivel" name="nivel" class="inputPre">
+
+      <option value="1">bajo</option>
+      <option value="2">bajo-medio</option>
+      <option value="3">medio</option>
+      <option value="4">medio-alto</option>
+      <option value="5">alto</option>
+  </select>
+
+
+  <button type="submit" onclick="jugarConsulta(event)">Empezar</button>
+
+</form>
+
+
+
+
+  </div>
+
+
+
+  <div id="juego">
+    <div id="pregunta-container">
+        <!-- Aquí se cargarán las preguntas y opciones dinámicamente -->
+    </div>
+    <button id="siguiente" style="display: none;" onclick="mostrarSiguientePregunta()">Siguiente</button>
+</div>
+
+

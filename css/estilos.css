@@ -162,6 +162,68 @@ input[type="number"]::-webkit-outer-spin-button {
     transition: background-color 0.3s ease;
 }
 
+.ctnRespuestas {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Espacio entre opciones */
+    width: max-content;
+    align-items: flex-start;
+    padding-bottom: 20px;
+}
+
+.opcion {
+    position: relative;
+    background-color: #142656; /* Fondo oscuro suave */
+    border-radius: 12px; /* Bordes redondeados */
+    padding: 0;
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 100%;
+}
+
+.opcion:hover {
+    background-color: #213361; /* Color ligeramente más claro al pasar el mouse */
+    transform: scale(1.05); /* Efecto de zoom */
+}
+
+.opcion input {
+    padding: 10px ;
+    width: 20px;
+    height: 20px;
+    appearance: none;
+    border-radius: 50%;
+    border: 2px solid #ffffff; /* Borde gris oscuro */
+    outline: none;
+    transition: background-color 0.3s, border-color 0.3s;
+    cursor: pointer;
+}
+
+.opcion input:checked {
+    background-color: #ffffff; /* Azul suave para la selección */
+    border-color: #00fffb; /* Azul más oscuro al estar seleccionado */
+}
+
+
+
+.opcion label {
+    font-size: 16px;
+    color: #ffffff; /* Texto gris claro en lugar de blanco */
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.3s;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.opcion input:checked + label {
+    color: #3b82f6; /* Color azul para el texto al estar seleccionado */
+}
+
+
+
 /* Adaptación a pantallas pequeñas */
 @media (max-width: 500px) {
     .ctnPre {

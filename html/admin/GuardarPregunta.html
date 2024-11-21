@@ -1,6 +1,6 @@
 
 
-<form id="guardarPreguntas" class="form" aria-label="Formulario para guardar preguntas">
+<form id="guardarPreguntas" class="form" aria-label="Formulario para guardar preguntas" onsubmit="guardarPregunta(event)">
 
     <h2>Guardar preguntas</h2>
 
@@ -8,14 +8,15 @@
     <div class="ctnPre">
         <div class="form-group">
             <label for="preg">Pregunta</label>
-            <input type="text" name="preg" id="preg" class="inputPre" placeholder="Pregunta:" aria-required="true">
+            <input type="text" name="preg" id="preg" class="inputPre" placeholder="Pregunta:" aria-required="true" required> 
         </div>
 
         <div class="form-group">
             <label for="preg">Nivel:</label>
             <!-- <input type="number" name="nivel" id="nivel" class="inputPre" placeholder="Dificultad" aria-required="true"> -->
 
-            <select id="nivel" name="nivel" class="inputPre">
+            <select id="nivel" name="nivel" class="inputPre" required>
+                <option value="">Dificultad</option>
                 <option value="1">bajo</option>
                 <option value="2">bajo-medio</option>
                 <option value="3">medio</option>
@@ -31,31 +32,37 @@
     <div class="ctnRta">
         <div class="form-group">
             <label for="rta1">Respuesta 1 (Correcta):</label>
-            <input type="text" name="rta1" id="rta1" class="input true" placeholder="Respuesta #1 (Correcta)">
+            <input type="text" name="rta1" id="rta1" class="input true" placeholder="Respuesta #1 (Correcta)" required>
         </div>
 
         <div class="form-group">
             <label for="rta2">Respuesta 2 (Falsa):</label>
-            <input type="text" name="rta2" id="rta2" class="input false" placeholder="Respuesta #2 (Falsa)">
+            <input type="text" name="rta2" id="rta2" class="input false" placeholder="Respuesta #2 (Falsa)" required>
         </div>
 
         <div class="form-group">
             <label for="rta3">Respuesta 3 (Falsa):</label>
-            <input type="text" name="rta3" id="rta3" class="input false" placeholder="Respuesta #3 (Falsa)">
+            <input type="text" name="rta3" id="rta3" class="input false" placeholder="Respuesta #3 (Falsa)" required>
         </div>
 
         <div class="form-group">
             <label for="rta4">Respuesta 4 (Falsa):</label>
-            <input type="text" name="rta4" id="rta4" class="input false" placeholder="Respuesta #4 (Falsa)">
+            <input type="text" name="rta4" id="rta4" class="input false" placeholder="Respuesta #4 (Falsa)" required>
         </div>
 
         <div class="form-group">
             <label for="rta5">Respuesta 5 (Falsa):</label>
-            <input type="text" name="rta5" id="rta5" class="input false" placeholder="Respuesta #5 (Falsa)">
+            <input type="text" name="rta5" id="rta5" class="input false" placeholder="Respuesta #5 (Falsa)"  required>
         </div>
     </div>
+    <!-- <input type="submit"  placeholder="Guardar" onclick="guardarPregunta(event)> -->
 
-    <button type="submit" onclick="guardarPregunta(event)">Guardar</button>
+
+
+    <button type="submit" ">Guardar</button>
+
+
+
 </form>
 
 

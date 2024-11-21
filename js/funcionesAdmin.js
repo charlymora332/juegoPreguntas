@@ -62,53 +62,13 @@ function guardarPregunta(event) {
   obj.send();
 }
 
-function eliminarPregunta(idPregunta, event) {
-  event.preventDefault();
-  const obj = new XMLHttpRequest();
-
-  obj.onload = function () {
-    document.getElementById("alertas").innerHTML = this.responseText;
-    // document.getElementById("visual").reload();
-  };
-
-  obj.open(
-    "GET",
-    "../../php/consultas/admin/eliminarPregunta.php?idPregunta=" +
-      encodeURIComponent(idPregunta)
-  );
-  obj.send();
-
-  // location.reload();
-}
-
-// function consultarPregunta(event) {
-//   event.preventDefault();
-//   let nivel = document.getElementById("nivel").value;
-
-//   const obj = new XMLHttpRequest();
-
-//   obj.onload = function () {
-//     document.getElementById("visual").innerHTML = this.responseText;
-//   };
-
-//   obj.open(
-//     "GET",
-//     "../../php/consultas/admin/consultarPreguntas.php?nivel=" +
-//       encodeURIComponent(nivel)
-//   );
-//   obj.send();
-// }
-
 // function eliminarPregunta(idPregunta, event) {
-
 //   event.preventDefault();
 //   const obj = new XMLHttpRequest();
 
 //   obj.onload = function () {
 //     document.getElementById("alertas").innerHTML = this.responseText;
 //     // document.getElementById("visual").reload();
-//   consultarPregunta();
-
 //   };
 
 //   obj.open(
@@ -120,6 +80,7 @@ function eliminarPregunta(idPregunta, event) {
 
 //   // location.reload();
 // }
+
 function eliminarPregunta(idPregunta, event) {
   event.preventDefault();
   const obj = new XMLHttpRequest();
@@ -286,83 +247,13 @@ function actualizarPregunta(event) {
   obj.send();
 }
 
-// function editarPregunta(idPregunta, event){
-//   // event.preventDefault();
-
-//   console.log(idPregunta)
-
-//   let preg, nivel, rta1, rta2, rta3, rta4, rta5, rtaConsulta;
-
-//   const obj = new XMLHttpRequest();
-
-//   const obj2 = new XMLHttpRequest();
-
-//   // obj2.onload = function () {
-//   //   // Cuando se elimina la pregunta, recargamos las preguntas con el filtro actual
-//   //   // document.getElementById("alertas").innerHTML = this.responseText;
-
-//   //   // Llamamos a la función para recargar las preguntas con el mismo filtro de dificultad
-//   //   mostrarAlerta(this.responseText)
-//   // };
-
-//   // obj2.open(
-//   //   "GET",
-//   //   "../../html/admin/editarPregunta.html"
-//   // );
-//   // obj2.send();
-
-//   obj.onload = function () {
-//     // Cuando se elimina la pregunta, recargamos las preguntas con el filtro actual
-//     rtaConsulta = this.responseText;
-
-//     // Llamamos a la función para recargar las preguntas con el mismo filtro de dificultad
-
-//   };
-
-//   obj.open(
-//     "GET",
-//     "../../php/consultas/admin/consultarPreguntaId.php?idPregunta=" +
-//       encodeURIComponent(idPregunta)
-//   );
-//   obj.send();
-
-//   console.log(rtaConsulta)
-// }
-
-// let dificultadFiltro;  // Esta variable guardará el nivel de dificultad seleccionado
-
-// function consultarPregunta(event) {
-//   if (event){
-//    event.preventDefault()
-//       let nivel = document.getElementById("nivel").value;
-
-//   dificultadFiltro = nivel;  // Guardamos el filtro de dificulta
-//   }
-//   // Obtenemos el valor del filtro de nivel
-//      // Si el evento está presente, prevenimos el comportamiento por defecto
-
-// d
-
-//   const obj = new XMLHttpRequest();
-
-//   obj.onload = function () {
-//     document.getElementById("visual").innerHTML = this.responseText;  // Recargamos el div con el resultado
-//   };
-
-//   obj.open(
-//     "GET",
-//     "../../php/consultas/admin/consultarPreguntas.php?nivel=" +
-//       encodeURIComponent(dificultadFiltro)  // Enviamos el filtro de nivel como parámetro
-//   );
-//   obj.send();
-// }
 
 function cerrarAlerta() {
   const texto = document.getElementById("alertas");
   texto.style.display = "none"; // Oculta el div
 }
 
-function mostrarAlerta(mensaje) {
+ function mostrarAlerta(mensaje) {
   const alerta = document.getElementById("alertas");
   alerta.style.display = "block"; // Muestra el div
   alerta.innerHTML = `
@@ -372,93 +263,3 @@ function mostrarAlerta(mensaje) {
 
   `;
 }
-
-// function FormularioPregunta() {
-//     const obj = new XMLHttpRequest();
-
-//     obj.onload = function () {
-//       document.getElementById("visual").innerHTML = this.responseText;
-//     };
-
-//     obj.open("GET", "html/GuardarPregunta.html");
-//     obj.send();
-//   }
-
-//   function jugar() {
-//     const obj = new XMLHttpRequest();
-
-//     obj.onload = function () {
-//       document.getElementById("visual").innerHTML = this.responseText;
-//     };
-
-//     obj.open("GET", "html/jugar.html");
-//     obj.send();
-//   }
-
-//   function guardarPregunta(event) {
-//     event.preventDefault();
-//     let preg = document.getElementById("preg").value;
-//     let nivel = document.getElementById("nivel").value;
-//     let resp1 = document.getElementById("rta1").value;
-//     let resp2 = document.getElementById("rta2").value;
-//     let resp3 = document.getElementById("rta3").value;
-//     let resp4 = document.getElementById("rta4").value;
-//     let resp5 = document.getElementById("rta5").value;
-
-//     const obj = new XMLHttpRequest();
-
-//     obj.onload = function () {
-//       document.getElementById("contenido").innerHTML = this.responseText;
-//     };
-
-//     obj.open(
-//       "GET",
-//       "./php/consultas/guardarPreguntas.php?preg=" +
-//         encodeURIComponent(preg) +
-//         "&nivel=" +
-//         encodeURIComponent(nivel) +
-//         "&resp1=" +
-//         encodeURIComponent(resp1) +
-//         "&resp2=" +
-//         encodeURIComponent(resp2) +
-//         "&resp3=" +
-//         encodeURIComponent(resp3) +
-//         "&resp4=" +
-//         encodeURIComponent(resp4) +
-//         "&resp5=" +
-//         encodeURIComponent(resp5)
-//     );
-//     obj.send();
-//   }
-
-//   function consultar(event) {
-//     event.preventDefault();
-//     let nivel = document.getElementById("nivel").value;
-
-//     const obj = new XMLHttpRequest();
-
-//     obj.onload = function () {
-//       document.getElementById("visual").innerHTML = this.responseText;
-//     };
-
-//     obj.open(
-//       "GET",
-//       "./php/consultas/consultarPreguntas.php?nivel=" + encodeURIComponent(nivel)
-//     );
-//     obj.send();
-//   }
-
-//   function eliminarPregunta(idPregunta) {
-//     const obj = new XMLHttpRequest();
-
-//     obj.onload = function () {
-//       document.getElementById("visual").innerHTML = this.responseText;
-//     };
-
-//     obj.open(
-//       "GET",
-//       "./php/consultas/eliminarPregunta.php?idPregunta=" +
-//         encodeURIComponent(idPregunta)
-//     );
-//     obj.send();
-//   }

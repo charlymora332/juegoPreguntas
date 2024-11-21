@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/estilos.css" type="text/css">
+    <link rel="stylesheet" href="../../css/estilos.css" type="text/css">
  
 
 <body>
@@ -25,7 +25,7 @@
             };
     
             // Configurar la solicitud POST
-            obj.open("POST", "../php/consultas/login.php", true);
+            obj.open("POST", "../../php/consultas/login.php", true);
     
             // Establecer el encabezado para enviar datos como formulario
             obj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -38,7 +38,7 @@
     <form action="">
         <input type="text" placeholder="Ingrese el usuario" id="user" name="user">
         <input type="password" placeholder="Ingrese la contreseña" id="pass" name="pass">
-        <button onclick="login()">Jugar</button>
+        <button onclick="login()">Iniciar Sesion</button>
     </form>
 
     <div class="" id="visual"></div>
