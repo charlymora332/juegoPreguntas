@@ -1,0 +1,201 @@
+     /* Estilos generales */
+     * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #222831;
+        /* Fondo más oscuro */
+        color: #eeeeee;
+        /* Texto claro */
+        padding: 20px;
+        width: 100vw;
+    }
+
+    /* Botones */
+
+    button, .button{
+        padding: 12px 24px;
+        background-color: #00adb5;
+        /* Color accesible y más contrastado */
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    button:hover,  .button:hover {
+        background-color: #008b92;
+    }
+
+    button:active,  .button:active {
+        background-color: #006e72;
+    }
+
+    .button{
+        text-decoration: none;
+    }
+
+    /* Inputs de texto */
+    input,
+    select {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        /* Color de texto más oscuro */
+        background-color: #f5f5f5;
+        /* Fondo claro */
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Placeholder */
+    input::placeholder {
+        color: #dfdfdf;
+        opacity: 1;
+        /* Totalmente visible */
+    }
+
+    /* Colores para las respuestas */
+    .inputPre {
+        background-color: #007a99 !important;
+        /* Fondo más accesible */
+        color: #ffffff;
+        /* Texto claro para mayor contraste */
+    }
+
+    .input.true {
+        background-color: #28a745;
+        color: #ffffff;
+        /* Texto blanco */
+    }
+
+    .input.false {
+        background-color: #dc3545;
+        color: #ffffff;
+        /* Texto blanco */
+    }
+
+    .form {
+        max-width: 100%;
+    }
+    .ctnBtn{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .ctnRta {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 10px;
+    }
+
+
+
+    .form-group label {
+        display: none;
+    }
+
+    .ctnPre {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 10px;
+    }
+
+    .alertas {
+        position: fixed; /* Cambiado a fixed para que siempre esté en la ventana */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 5px solid rgb(255, 255, 255);
+        background-color: #93b6ea;
+        height: max-content;
+        width: max-content;
+        padding: 20px;
+        color: white;
+        display: none; /* Oculto inicialmente */
+        text-align: center;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra opcional */
+        z-index: 9999; /* Asegura que el mensaje esté encima de otros elementos */
+        color: #000000;
+        
+    }
+    
+    
+/* Tabla */
+.tabla-preguntas {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #f4f6fa; /* Fondo claro para una buena lectura */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.tabla-preguntas thead {
+    background-color: #003366; /* Azul más profesional */
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.tabla-preguntas th,
+.tabla-preguntas td {
+    text-align: left;
+    padding: 14px 16px;
+    border-bottom: 1px solid #e0e0e0; /* Línea sutil entre filas */
+}
+
+.tabla-preguntas tr:nth-child(even) {
+    background-color: #e9f5ff; /* Azul claro para alternar filas */
+}
+
+.tabla-preguntas tr:hover {
+    background-color: #d1e8ff; /* Azul suave al pasar el cursor */
+    transition: background-color 0.3s ease;
+}
+
+.tabla-preguntas tr:hover td {
+    font-weight: bold; /* Destacar texto al pasar el cursor */
+}
+
+.tabla-preguntas th {
+    border-bottom: 2px solid #00509e; /* Línea más fuerte en encabezados */
+}
+
+.tabla-preguntas td {
+    color: #333; /* Texto en color oscuro para mayor legibilidad */
+}
+
+.tabla-preguntas tr {
+    transition: background-color 0.3s ease;
+}
+
+    
+
+    /* Para pantallas pequeñas */
+    @media (max-width: 500px) {
+        .ctnPre {
+
+            grid-template-columns: 1fr;
+        }
+
+    }

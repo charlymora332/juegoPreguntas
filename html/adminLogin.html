@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/estilos.css" type="text/css">
+ 
+
+<body>
+    <script>
+        function login() {
+            event.preventDefault();
+            // Obtener los valores del formulario
+            const user = document.getElementById('user').value;
+            const pass = document.getElementById('pass').value;
+    
+            // Crear el objeto XMLHttpRequest
+            const obj = new XMLHttpRequest();
+    
+            // Definir la función de callback para manejar la respuesta
+            obj.onload = function () {
+                document.getElementById("visual").innerHTML = this.responseText;
+            };
+    
+            // Configurar la solicitud POST
+            obj.open("POST", "../php/consultas/login.php", true);
+    
+            // Establecer el encabezado para enviar datos como formulario
+            obj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    
+            // Enviar los datos en el cuerpo de la solicitud
+            obj.send("user=" + encodeURIComponent(user) + "&pass=" + encodeURIComponent(pass));
+        }
+    </script>
+    
+    <form action="">
+        <input type="text" placeholder="Ingrese el usuario" id="user" name="user">
+        <input type="password" placeholder="Ingrese la contreseña" id="pass" name="pass">
+        <button onclick="login()">Jugar</button>
+    </form>
+
+    <div class="" id="visual"></div>
+</body>
+
+</html>

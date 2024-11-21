@@ -1,0 +1,170 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1c1f26; /* Fondo más oscuro para un diseño profundo */
+    color: #eeeeee; /* Texto claro */
+    padding: 20px;
+    width: 100vw;
+}
+
+/* Botones */
+button, .button {
+    padding: 12px 24px;
+    background-color: #00adb5; /* Color principal */
+    color: #ffffff; /* Texto claro */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.form-group label {
+    display: none;
+}
+
+button:hover, .button:hover {
+    background-color: #008b92;
+}
+
+button:active, .button:active {
+    background-color: #006e72;
+}
+
+.button {
+    text-decoration: none;
+}
+
+/* Inputs */
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background-color: #2a2d35; /* Fondo oscuro */
+    border: 1px solid #4a4f58; /* Borde contrastante */
+    color: #eeeeee;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+input::placeholder {
+    color: #cacaca; /* Placeholder más claro */
+}
+
+/* Personalización de inputs tipo número */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+
+.input.true {
+    background-color: #28a745;
+    color: #ffffff;
+    /* Texto blanco */
+}
+
+.input.false {
+    background-color: #dc3545;
+    color: #ffffff;
+    /* Texto blanco */
+}
+
+.ctnPre {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
+}
+
+/* Contenedores */
+.form {
+    max-width: 100%;
+}
+
+.ctnBtn {
+    display: flex;
+    gap: 10px; /* Espacio entre botones */
+}
+
+.ctnRta {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 10px;
+}
+
+/* Mensajes de alerta */
+.alertas {
+    position: fixed;
+
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #007a99;
+    color: #ffffff;
+    padding: 12px 20px ;
+    box-shadow: 15px 14px 81px rgb(0, 0, 0);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra más prominente */
+    box-shadow: 0px 0px 10px 8px rgba(255, 255, 255, 0.55);
+    border-radius: 8px;
+
+    display: none; /* Oculto inicialmente */
+    z-index: 9999;
+    text-align: center;
+    font-weight: 600;
+}
+
+.alertas button {
+    margin-top: 12px; /* Espaciado entre los elementos internos */
+}
+
+/* Tablas */
+.tabla-preguntas {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #2a2d35; /* Fondo oscuro */
+    color: #eeeeee;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tabla-preguntas thead {
+    background-color: #00509e; /* Azul oscuro */
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.tabla-preguntas th,
+.tabla-preguntas td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #4a4f58;
+}
+
+.tabla-preguntas tr:nth-child(even) {
+    background-color: #353940; /* Alternancia de filas */
+}
+
+.tabla-preguntas tr:hover {
+    background-color: #3e4450; /* Resaltado */
+    transition: background-color 0.3s ease;
+}
+
+/* Adaptación a pantallas pequeñas */
+@media (max-width: 500px) {
+    .ctnPre {
+        grid-template-columns: 1fr;
+    }
+}
