@@ -1,0 +1,12 @@
+# Ignorar dependencias
+/vendor/
+/node_modules/
+
+# Ignorar configuraciones locales
+.env
+*.log
+
+# Ignorar IDEs y sistemas
+.vscode/
+Thumbs.db
+.DS_Store
