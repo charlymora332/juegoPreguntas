@@ -140,7 +140,7 @@ function consultarPregunta(event) {
   );
   obj.send();
 }
- let idPreguntaActualizar;
+let idPreguntaActualizar;
 function editarPregunta(idPregunta, event) {
   // event.preventDefault(); // Si necesitas prevenir el comportamiento por defecto, descomenta esta línea
 
@@ -205,9 +205,8 @@ function editarPregunta(idPregunta, event) {
 }
 
 function actualizarPregunta(event) {
-
-  console.log(idPreguntaActualizar)
-  console.log("object")
+  console.log(idPreguntaActualizar);
+  console.log("object");
   event.preventDefault();
   let preg = document.getElementById("preg").value;
   let nivel = document.getElementById("nivel").value;
@@ -220,9 +219,8 @@ function actualizarPregunta(event) {
   const obj = new XMLHttpRequest();
 
   obj.onload = function () {
-    mostrarAlerta(this.responseText );
+    mostrarAlerta(this.responseText);
     consultarPregunta();
-
   };
 
   obj.open(
@@ -247,13 +245,12 @@ function actualizarPregunta(event) {
   obj.send();
 }
 
-
 function cerrarAlerta() {
   const texto = document.getElementById("alertas");
   texto.style.display = "none"; // Oculta el div
 }
 
- function mostrarAlerta(mensaje) {
+function mostrarAlerta(mensaje) {
   const alerta = document.getElementById("alertas");
   alerta.style.display = "block"; // Muestra el div
   alerta.innerHTML = `
