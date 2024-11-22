@@ -2,10 +2,10 @@ function FormularioGuardarPreg() {
   const obj = new XMLHttpRequest();
 
   obj.onload = function () {
-    document.getElementById("visual").innerHTML = this.responseText;
+    document.getElementById("visualCanvas").innerHTML = this.responseText;
   };
 
-  obj.open("GET", "./GuardarPregunta.html");
+  obj.open("GET", "./html/admin/GuardarPregunta.html");
   obj.send();
 }
 
@@ -13,10 +13,10 @@ function FormularioConsultarPreg() {
   const obj = new XMLHttpRequest();
 
   obj.onload = function () {
-    document.getElementById("visual").innerHTML = this.responseText;
+    document.getElementById("visualCanvas").innerHTML = this.responseText;
   };
 
-  obj.open("GET", "./ConsularPregunta.html");
+  obj.open("GET", "./html/admin/ConsularPregunta.html");
   obj.send();
 }
 
@@ -44,7 +44,7 @@ function guardarPregunta(event) {
   // php/consultas/guardarPreguntas.php
   obj.open(
     "GET",
-    "../../php/consultas/admin/guardarPreguntas.php?preg=" +
+    "./php/consultas/admin/guardarPreguntas.php?preg=" +
       encodeURIComponent(preg) +
       "&nivel=" +
       encodeURIComponent(nivel) +
@@ -80,70 +80,78 @@ function guardarPregunta(event) {
 
 //   // location.reload();
 // }
-
 function eliminarPregunta(idPregunta, event) {
-  event.preventDefault();
+  event.preventDefault(); // Previene el comportamiento por defecto del formulario o enlace
   const obj = new XMLHttpRequest();
+  const posicionScroll = window.scrollY; // Guardar la posición del scroll
 
   obj.onload = function () {
-    // Cuando se elimina la pregunta, recargamos las preguntas con el filtro actual
-    document.getElementById("alertas").innerHTML = this.responseText;
+    if (obj.status === 200) {
+      // Mostrar el mensaje de éxito o alerta en el div correspondiente
+      document.getElementById("alertas").innerHTML = this.responseText;
 
-    // Llamamos a la función para recargar las preguntas con el mismo filtro de dificultad
-    consultarPregunta();
+      // Recargar las preguntas con el filtro actual y restaurar el scroll
+      consultarPregunta(null, posicionScroll);
+    } else {
+      console.error("Error al eliminar la pregunta:", obj.statusText);
+    }
   };
 
   obj.open(
     "GET",
-    "../../php/consultas/admin/eliminarPregunta.php?idPregunta=" +
+    "./php/consultas/admin/eliminarPregunta.php?idPregunta=" +
       encodeURIComponent(idPregunta)
   );
   obj.send();
 }
 
-let dificultadFiltro; // Aseguramos que la variable global esté definida
+// Variable global para almacenar el filtro de dificultad
+let dificultadFiltro;
 
-function consultarPregunta(event) {
-  // Solo prevenimos el comportamiento por defecto si el evento está presente
+function consultarPregunta(event, posicionScroll = 0) {
   if (event) {
-    event.preventDefault();
+    event.preventDefault(); // Prevenir comportamiento por defecto si el evento existe
   }
 
-  // Verificamos si el valor del nivel está presente
+  // Obtener el nivel del filtro o usar la variable global
   let nivel = document.getElementById("nivel")
     ? document.getElementById("nivel").value
     : dificultadFiltro;
 
-  // Si no tenemos el nivel, lo asignamos a la variable global
   if (!dificultadFiltro && nivel) {
-    dificultadFiltro = nivel;
+    dificultadFiltro = nivel; // Almacenar en la variable global si no está definida
   }
 
-  // Creamos la petición AJAX
+  // Crear la solicitud AJAX para recargar las preguntas
   const obj = new XMLHttpRequest();
 
-  // Configuramos la función de carga (cuando se recibe la respuesta del servidor)
   obj.onload = function () {
     if (obj.status === 200) {
-      // Verificamos que la respuesta fue exitosa
-      document.getElementById("visual").innerHTML = this.responseText; // Actualizamos el div
+      // Actualizar el contenido del div con las preguntas
+      document.getElementById("visualCanvas").innerHTML = this.responseText;
+
+      // Restaurar la posición del scroll
+      window.scrollTo(0, posicionScroll);
     } else {
       console.error("Error al cargar las preguntas:", obj.statusText);
     }
   };
 
-  // Enviamos la solicitud con el parámetro de nivel (filtro de dificultad)
+  // Enviar la solicitud con el filtro de dificultad como parámetro
   obj.open(
     "GET",
-    "../../php/consultas/admin/consultarPreguntas.php?nivel=" +
+    "./php/consultas/admin/consultarPreguntas.php?nivel=" +
       encodeURIComponent(dificultadFiltro)
   );
   obj.send();
 }
+ 
 let idPreguntaActualizar;
 function editarPregunta(idPregunta, event) {
   // event.preventDefault(); // Si necesitas prevenir el comportamiento por defecto, descomenta esta línea
 
+    event.preventDefault();
+ 
   idPreguntaActualizar = idPregunta;
 
   let preg, nivel, rta1, rta2, rta3, rta4, rta5, rtaConsulta;
@@ -159,7 +167,7 @@ function editarPregunta(idPregunta, event) {
     mostrarAlerta(this.responseText);
   };
 
-  obj2.open("GET", "../../html/admin/editarPregunta.html");
+  obj2.open("GET", "./html/admin/editarPregunta.html");
   obj2.send();
 
   obj.onload = function () {
@@ -198,7 +206,7 @@ function editarPregunta(idPregunta, event) {
 
   obj.open(
     "GET",
-    "../../php/consultas/admin/consultarPreguntaId.php?idPregunta=" +
+    "./php/consultas/admin/consultarPreguntaId.php?idPregunta=" +
       encodeURIComponent(idPregunta)
   );
   obj.send();
@@ -225,7 +233,7 @@ function actualizarPregunta(event) {
 
   obj.open(
     "GET",
-    "../../php/consultas/admin/actualizarPregunta.php?id=" +
+    "./php/consultas/admin/actualizarPregunta.php?id=" +
       encodeURIComponent(idPreguntaActualizar) +
       "&preg=" +
       encodeURIComponent(preg) +
@@ -259,4 +267,86 @@ function mostrarAlerta(mensaje) {
     <button onclick="cerrarAlerta()" style="background-color: #991717 ;">Cerrar</button>
 
   `;
+}
+
+function login(event) {
+  event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
+
+  // Obtener los valores del formulario
+  const user = document.getElementById("user").value;
+  const pass = document.getElementById("pass").value;
+
+  // Crear el objeto XMLHttpRequest
+  const obj = new XMLHttpRequest();
+
+  // Definir la función de callback para manejar la respuesta
+  obj.onload = function () {
+    try {
+      // Parsear la respuesta como JSON
+      const result = JSON.parse(this.responseText);
+
+      console.log("Respuesta JSON:", result);
+
+      if (result.status === "success") {
+        const respuesta = result.data.respuesta;
+        const usuario = result.data.usuario;
+
+        console.log("Respuesta:", respuesta);
+        console.log("Usuario:", usuario);
+
+        if (respuesta) {
+          // window.location.href = "/html/admin/adminDashboard.html";
+          mostrarAlerta(`Bienvenido, ${usuario}`);
+
+          //   document.getElementById("alertas").innerHTML = `<p style="color: red;">${result.message}</p>`;
+
+          const obj2 = new XMLHttpRequest(); // Crear una instancia de XMLHttpRequest
+          obj2.open("GET", "./html/admin/adminDashboard.html", true); // Configurar la solicitud (GET al archivo)
+
+          obj2.onload = function () {
+            if (obj2.status === 200) {
+              // Inyectar el contenido del archivo en el elemento destino
+              document.getElementById("visual").innerHTML = obj2.responseText;
+
+              console.log(obj2.responseText);
+            } else {
+              console.error("Error al cargar el archivo HTML:", obj2.status);
+              document.getElementById(
+                ('visual')
+              ).innerHTML = `<p>Error al cargar contenido.</p>`;
+            }
+          };
+
+          obj2.onerror = function () {
+            console.error("Error de conexión al cargar el archivo HTML.");
+          };
+
+          obj2.send(); // Enviar la solicitud
+        }
+      } else {
+        // Mostrar mensaje de error
+        document.getElementById(
+          "alertas"
+        ).innerHTML = `<p style="color: red;">${result.message}</p>`;
+
+        mostrarAlerta(`<h3>${result.message}</h3>`);
+      }
+    } catch (error) {
+      console.error("Error al procesar la respuesta:", error);
+      document.getElementById(
+        "alertas"
+      ).innerHTML = `<p style="color: red;">Error en el servidor. Intenta nuevamente.</p>`;
+    }
+  };
+
+  // Configurar la solicitud POST
+  obj.open("POST", "./php/consultas/login.php", true);
+
+  // Establecer el encabezado para enviar datos como formulario
+  obj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+  // Enviar los datos en el cuerpo de la solicitud
+  obj.send(
+    "user=" + encodeURIComponent(user) + "&pass=" + encodeURIComponent(pass)
+  );
 }

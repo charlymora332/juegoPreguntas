@@ -8,65 +8,24 @@
 
     <link rel="stylesheet" href="./css/estilos.css" type="text/css">
     <!-- <script src="./js/funcionesAdmin.js"></script> -->
-    <script  src="./js/funcionesUser.js"></script>
-
-
-
-
-
-
-
-
-
-
-
+    <script src="./js/funcionesUser.js"></script>
+    <script src="./js/funcionesAdmin.js"></script>
 </head>
 
 <body>
-
     <div id="visual">
-    <div class="ctnBtn">
-        <div class="">
-
-
-
-            <button onclick="jugar()">Jugar</button>
-
-        </div>
-
-      
-
-
-
-
-
-
-        <div>
-            <a  class="button" href="./html/admin/adminLogin.html">Admin</a>
-
-        </div>
-
+        <div class="ctnBtn">
+            <div class="">
+                <button onclick="cargarHtml('visual', './html/usuario/dashboardUser.html')">Jugar</button>
+                <button onclick="cargarHtml( 'visual', './html/admin/adminLogin.html')">Administrador</button>
 
      
-    </div>
-
-
-
-
-
-
-
-    </div>
-
-    <div class="">
-
-    </div>
-
-
-    <div class="alertas" id="alertas">
-
-
             </div>
+        </div>
+    </div>
+    <div class="alertas" id="alertas">
+        <!-- contenedor de alertas inyectadas por js -->
+    </div>
 
 </body>
 

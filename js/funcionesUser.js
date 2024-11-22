@@ -1,4 +1,4 @@
-function jugar() {
+function cargarHtml(div, url) {
   const obj = new XMLHttpRequest();
 
   obj.onload = function () {
@@ -8,7 +8,7 @@ function jugar() {
     // Llamamos a la función para recargar las preguntas con el mismo filtro de dificultad
   };
 
-  obj.open("GET", "./html/usuario/dashboardUser.html ");
+  obj.open("GET", url);
   obj.send();
 }
 
@@ -194,12 +194,10 @@ function validarRespuesta() {
   // Incrementamos el índice de preguntas y mostramos la siguiente
   preguntaActual++;
   mostrarPregunta();
-
-
 }
-function mostrarResultados(preg,rtaCorrectas) {
+function mostrarResultados(preg, rtaCorrectas) {
   const container = document.getElementById("visual");
-  container.innerHTML = " <button onclick='jugar()'>Jugar De Nuevo</button>";
+  container.innerHTML = ` <button onclick="cargarHtml('visual', './html/usuario/dashboardUser.html')">Jugar De Nuevo</button>`;
   mostrarAlerta(`<h3>¡Juego terminado!</h3> </br>
          Puntuacion ${rtaCorrectas} /    ${preg} 
 
