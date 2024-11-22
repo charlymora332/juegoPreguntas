@@ -28,29 +28,7 @@ function mostrarAlerta(mensaje) {
     `;
 }
 
-// function jugarConsulta(event){
-//     event.preventDefault();
 
-//     nivel =  document.getElementById('nivel').value
-//     console.log(nivel)
-//     const obj = new XMLHttpRequest();
-
-//     obj.onload = function () {
-//       // Cuando se elimina la pregunta, recargamos las preguntas con el filtro actual
-//       document.getElementById("visual").innerHTML = this.responseText;
-
-//       // Llamamos a la función para recargar las preguntas con el mismo filtro de dificultad
-
-//     };
-
-//     obj.open(
-//       "GET",
-//       "./php/consultas/user/consultarPreguntas.php?nivel=" +
-//         encodeURIComponent(nivel)
-//     );
-//     obj.send();
-
-// }
 
 let preguntas = []; // Variable global para almacenar preguntas
 let preguntaActual = 0; // Índice de la pregunta actual
@@ -82,9 +60,6 @@ function jugarConsulta(event) {
   );
   obj.send();
 }
-// './' indica que está en el mismo directorio
-
-// Llamada a la función importada
 
 let puntuacion = 0;
 function mostrarPregunta() {
@@ -133,11 +108,6 @@ function mostrarPregunta() {
     botonSiguiente.onclick = validarRespuesta;
     container.appendChild(botonSiguiente);
 
-    // const puntuacion = document.createElement("h4");
-    // puntuacion.textContent = ;
-    // botonSiguiente.onclick = validarRespuesta;
-    // container.appendChild(botonSiguiente);
-
     const mensaje = document.createElement("h3");
     const mensaje2 = document.createElement("h3");
     let valoracion = "";
@@ -160,12 +130,6 @@ function mostrarPregunta() {
       mensaje.style.fontWeight = "normal";
       valoracion = "Puntuación Baja";
     }
-
-    // Animación para una transición suave (opcional)
-    // const puntuacionContainer = document.getElementById('container');
-    // puntuacionContainer.style.transition = "opacity 0.5s ease-in-out";
-    // puntuacionContainer.style.opacity = 0;
-
     mensaje.textContent = `${valoracion} `; // Muestra el número de la pregunta actual
     container.appendChild(mensaje);
     mensaje2.textContent = `${puntuacion} / ${preguntaActual}`;

@@ -62,24 +62,6 @@ function guardarPregunta(event) {
   obj.send();
 }
 
-// function eliminarPregunta(idPregunta, event) {
-//   event.preventDefault();
-//   const obj = new XMLHttpRequest();
-
-//   obj.onload = function () {
-//     document.getElementById("alertas").innerHTML = this.responseText;
-//     // document.getElementById("visual").reload();
-//   };
-
-//   obj.open(
-//     "GET",
-//     "../../php/consultas/admin/eliminarPregunta.php?idPregunta=" +
-//       encodeURIComponent(idPregunta)
-//   );
-//   obj.send();
-
-//   // location.reload();
-// }
 function eliminarPregunta(idPregunta, event) {
   event.preventDefault(); // Previene el comportamiento por defecto del formulario o enlace
   const obj = new XMLHttpRequest();
@@ -160,10 +142,7 @@ function editarPregunta(idPregunta, event) {
   const obj2 = new XMLHttpRequest();
 
   obj2.onload = function () {
-    // Cuando se elimina la pregunta, recargamos las preguntas con el filtro actual
-    // document.getElementById("alertas").innerHTML = this.responseText;
 
-    // Llamamos a la función para recargar las preguntas con el mismo filtro de dificultad
     mostrarAlerta(this.responseText);
   };
 
