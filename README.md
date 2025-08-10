@@ -37,7 +37,7 @@ El jugador disfruta de una experiencia de juego sencilla y dinámica:
 
 Frontend: Angular, CSS
 
-Backend: java, Express
+Backend: PHP
 
 Base de datos: MySQL / MongoDB
 
